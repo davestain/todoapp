@@ -2,7 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
 import cors from 'cors';
-import routes from "./routes/taskRoutes";
+import routes from "./routes/taskRoutes.js";
+import errorMiddleware from './middlewares/error.js';
 
 const app = express();
 
@@ -21,11 +22,15 @@ app.use(cors());
 
 //routes
 routes(app);
+app.use(errorMiddleware);
 
 app.get('/', (req,res)=>
     res.send(`Our application is running on port ${PORT}`)
 );
+if(process.env.NODE_ENV !== 'test'){
+    app.listen(PORT, async() =>
+    console.log(`ToDoApp server is running on port ${PORT} `)
+    );
+}
 
-app.listen(PORT, () =>
- console.log(`ToDoApp server is running on port ${PORT} `)
-);
+module.exports = app;

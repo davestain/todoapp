@@ -5,7 +5,6 @@ import axios from 'axios'
 import './App.css'
 import TaskCreate from './Task/TaskCreate';
 import TaskList from './Task/TaskList';
-import { ITask } from "../Models/ITask";
 
 const App:React.FC = () => {
   const [taskList, setTaskList] = useState([])

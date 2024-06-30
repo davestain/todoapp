@@ -3,7 +3,7 @@ import {
     getTasks,
     updateTask,
     deleteTask
- } from "../controllers/taskController";
+ } from "../controllers/taskController.js";
 
  const routes = (app) => {
     app.route('/tasks')
