@@ -13,7 +13,7 @@ services:
     # Mapping the frontend directory on the host machine to the /app directory on the container.
     volumes:
       - ./FrontEnd:/app
-      - ./app/node_modules
+      - /app/node_modules
     # Allows you to run container in detached mode.
     stdin_open: true
     tty: true
@@ -25,4 +25,4 @@ services:
       - "5000:5000"
     volumes:
       - ./BackEnd:/app
-      - ./app/node_modules
+      - /app/node_modules
