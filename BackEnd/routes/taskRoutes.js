@@ -10,7 +10,7 @@ import {
     .get(getTasks)
     .post(addNewTask)
 
-    app.route('task/:TaskId')
+    app.route('/task/:TaskId')
     .put(updateTask)
     .delete(deleteTask)
  };

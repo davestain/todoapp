@@ -15,7 +15,8 @@ const App:React.FC = () => {
   useEffect(() => {
     axios.get(apiUrl)
     .then(response => {
-      setTaskList(response.data)
+      setTaskList(response.data);
+      console.log(response.data);
     })
     .catch(err => console.log(err));
   }, []);
@@ -24,9 +25,13 @@ const App:React.FC = () => {
     setAddNewItem((addNewItem) => !addNewItem);
   }
 
-  // const addNewTask = () => {
-  //   axios.post()
-  // }
+  const updateTasks = ()=>{
+    axios.get(apiUrl)
+    .then(response => {
+      setTaskList(response.data)
+    })
+    .catch(err => console.log(err));
+  }
 
   return (
     <div className="container-fluid">
@@ -39,12 +44,12 @@ const App:React.FC = () => {
       </div>
 
       <div className="row">
-        <div className="col s6 offset-s3"><TaskList tasks={taskList}/></div>
+        <div className="col s6 offset-s3"><TaskList tasks={taskList} onUpdate={updateTasks}/></div>
       </div>
       <div className="row">
       {addNewItem?
         <div className="col s12">
-          <TaskCreate onCancel={toggleAdd}/>
+          <TaskCreate onCancel={toggleAdd} onCreatedTask={updateTasks}/>
         </div>:
         <div className="col s4 offset-s4">
           <a className="btn-large waves-effect waves-light blue" onClick={toggleAdd}><i className="material-icons">add</i>Add a task</a>
