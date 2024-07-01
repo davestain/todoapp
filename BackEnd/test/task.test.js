@@ -3,6 +3,10 @@ import request from 'supertest';
 import app from '../index';
 
 
+afterAll(done => {
+    done();
+});
+
 describe('/GET Test Collection', () => {
     it('should bring all items from DB',async()=>{
 
@@ -10,6 +14,5 @@ describe('/GET Test Collection', () => {
         .get('/tasks');
 
         expect(res.statusCode).toBe(200);
-
     })
-})
+});
