@@ -1,0 +1,28 @@
+# The version of the docker-compose.
+version: "3.8"
+# Telling docker-compose to build the frontend and server images and run them in containers.
+services:
+  client:
+    # Telling docker-compose to build the frontend image using the Dockerfile in the FrontEnd directory.
+    build: ./FrontEnd
+    # Giving the container a name.
+    container_name: frontend_ct
+    # Mapping the port 3000 on the host machine to the port 3000 on the container.
+    ports:
+      - "3000:3000"
+    # Mapping the frontend directory on the host machine to the /app directory on the container.
+    volumes:
+      - ./FrontEnd:/app
+      - ./app/node_modules
+    # Allows you to run container in detached mode.
+    stdin_open: true
+    tty: true
+  server:
+    # Telling docker-compose to build the backend image using the Dockerfile in the BackEnd directory.
+    build: ./BackEnd
+    container_name: backend_ct
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./BackEnd:/app
+      - ./app/node_modules
