@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon ./index.js --exec babel-node -e js",
+    "start": "nodemon -L ./index.js --exec babel-node -e js",
     "test": "jest --runInBand --detectOpenHandles --forceExit"
   },
   "author": "",

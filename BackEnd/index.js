@@ -4,10 +4,11 @@ import bodyparser from 'body-parser';
 import cors from 'cors';
 import routes from "./routes/taskRoutes.js";
 import errorMiddleware from './middlewares/error.js';
+import dotenv from 'dotenv';
 
 const app = express();
 
-require("dotenv").config();
+dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/todoapiDB";
@@ -33,4 +34,4 @@ if(process.env.NODE_ENV !== 'test'){
     );
 }
 
-module.exports = app;
+export default app;
